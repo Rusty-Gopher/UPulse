@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=UPulse
+GenericName=System Control Center
+Comment=Performance, storage, apps, system info and updates for your Ubuntu system
+Exec=upulse
+Icon=upulse
+Terminal=false
+Categories=System;Monitor;
+Keywords=system;monitor;cpu;memory;ram;disk;process;apps;packages;install;update;
+StartupNotify=true
+StartupWMClass=upulse

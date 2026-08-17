@@ -1,0 +1,16 @@
+/target
+
+# Editor / OS junk
+*.swp
+*~
+.DS_Store
+
+# Local Claude Code project settings (not for distribution)
+.claude/
+
+# Design handoff bundle
+*.zip
+
+# Local planning notes (not for distribution)
+reference/
+

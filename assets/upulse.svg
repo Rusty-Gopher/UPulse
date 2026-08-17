@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3b82f6"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- rounded card -->
+  <rect x="16" y="16" width="224" height="224" rx="56" fill="url(#bg)"/>
+  <!-- soft top-light -->
+  <rect x="16" y="16" width="224" height="112" rx="56" fill="#ffffff" opacity="0.08"/>
+
+  <!-- shield -->
+  <path d="M128 54 L186 76 V128 C186 165 163 188 128 201 C93 188 70 165 70 128 V76 Z"
+        fill="#ffffff" fill-opacity="0.10"
+        stroke="#ffffff" stroke-width="12" stroke-linejoin="round"/>
+
+  <!-- pulse -->
+  <polyline points="92,131 111,131 121,105 136,155 146,131 164,131"
+            fill="none" stroke="#ffffff" stroke-width="11"
+            stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

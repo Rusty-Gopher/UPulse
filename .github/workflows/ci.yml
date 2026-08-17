@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: >
+          sudo apt-get update && sudo apt-get install -y
+          build-essential pkg-config libgl1-mesa-dev
+          libwayland-dev libxkbcommon-dev libx11-dev
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo fmt --check
+      - run: cargo clippy --release --all-targets -- -D warnings
+      - run: cargo test --release
+      - run: cargo install cargo-deb --locked
+      - run: cargo deb
+      - uses: actions/upload-artifact@v4
+        with:
+          name: upulse-deb
+          path: target/debian/*.deb
+
+  audit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo install cargo-audit --locked
+      - run: cargo audit

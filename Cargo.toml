@@ -1,0 +1,37 @@
+[package]
+name = "upulse"
+version = "1.1.0"
+edition = "2021"
+description = "A clean, GPU-rendered Ubuntu control center: performance, storage, apps, system info, and updates"
+authors = ["Rusty-Gopher <102315980+Rusty-Gopher@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/Rusty-Gopher/upulse"
+categories = ["gui", "os"]
+keywords = ["ubuntu", "system-monitor", "egui", "apt"]
+
+[package.metadata.deb]
+maintainer = "Rusty-Gopher <102315980+Rusty-Gopher@users.noreply.github.com>"
+copyright = "2026, Rusty-Gopher"
+license-file = ["LICENSE", "0"]
+section = "admin"
+priority = "optional"
+extended-description = "A native, GPU-rendered control center for Ubuntu: live performance, storage and large-file cleanup, APT app management, system cleaner, startup & services, repositories, deep system info, and in-app updates — with two-click confirms and read-only protection for OS-critical packages."
+depends = "$auto, policykit-1, apt, dpkg, pciutils"
+recommends = "software-properties-common"
+assets = [
+    ["target/release/upulse", "usr/bin/", "755"],
+    ["assets/upulse.desktop", "usr/share/applications/", "644"],
+    ["assets/upulse.svg", "usr/share/icons/hicolor/scalable/apps/upulse.svg", "644"],
+    ["README.md", "usr/share/doc/upulse/README", "644"],
+]
+
+[dependencies]
+eframe = { version = "0.36", features = ["wayland"] }
+egui = "0.36"
+sysinfo = "0.32"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+strip = true
